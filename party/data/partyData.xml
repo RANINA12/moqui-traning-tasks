@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="seed">
+    <Nikunj.party.Party partyId="101" partyTypeEnumId="PERSON" createdDate=""/>
+    <Nikunj.party.Party partyId="102" partyTypeEnumId="PERSON" createdDate=""/>
+    <Nikunj.party.Party partyId="103" partyTypeEnumId="PARTY_GROUP" createdDate=""/>
+    <Nikunj.party.Party partyId="104" partyTypeEnumId="PARTY_GROUP" createdDate=""/>
+    <Nikunj.party.Party partyId="105" partyTypeEnumId="PERSON" createdDate=""/>
+    <Nikunj.party.Party partyId="106" partyTypeEnumId="PERSON" createdDate=""/>
+
+    <Nikunj.party.Person partyId="101" firstName="Nikunj" lastName="Bisani" dateOfBirth="2002-12-14"/>
+    <Nikunj.party.Person partyId="102" firstName="Namami" lastName="Bisani" dateOfBirth="2004-02-29"/>
+    <Nikunj.party.Person partyId="105" firstName="Prateek" lastName="Jat" dateOfBirth="2002-12-20"/>
+
+    <Nikunj.party.PartyGroup partyId="104" description="This is online Platform where you can gain or practice for the Interview for placement" groupName="AI Interviewer Platform"/>
+    <Nikunj.party.PartyGroup partyId="103" description="This is Intranet operating project , where you can buy and rent the necessary things" groupName="Rent-Smart"/>
+
+    <Nikunj.party.ContactMech contactMechId="201" contactMechTypeId="EMAIL" infoString="sanjanapatel@gmail.com" createdDate="2026-01-10T20:17:07"/>
+    <Nikunj.party.ContactMech contactMechId="202" contactMechTypeId="TELECOM_NUMBER" infoString="9303115622" createdDate="2026-01-17T13:31:08"/>
+    <Nikunj.party.ContactMech contactMechId="203" contactMechTypeId="TELECOM_NUMBER" infoString="0731-2567890" createdDate="2026-01-10T20:17:09"/>
+    <Nikunj.party.ContactMech contactMechId="204" contactMechTypeId="TELECOM_NUMBER" infoString="0731-2567891" createdDate="2026-01-10T20:17:27" />
+    <Nikunj.party.ContactMech contactMechId="205" contactMechTypeId="TELECOM_NUMBER" infoString="0731-2567892" createdDate="2026-01-10T20:17:47" />
+    <Nikunj.party.ContactMech contactMechId="206" contactMechTypeId="EMAIL" infoString="namamibisani@gmail.com" createdDate="2026-01-10T20:17:57" />
+    <Nikunj.party.ContactMech contactMechId="207" contactMechTypeId="TELECOM_NUMBER" infoString="9752608991" createdDate="2026-01-17T20:17:57" />
+
+
+    <Nikunj.party.PartyContactMech partyId="102" contactMechId="206" fromDate="2026-01-09T20:17:07" thruDate="2026-12-31T23:59:59"/>
+    <Nikunj.party.PartyContactMech partyId="102" contactMechId="207" fromDate="2026-01-09T20:17:07" thruDate="2026-12-31T23:59:58"/>
+    <Nikunj.party.PartyContactMech partyId="104" contactMechId="201" fromDate="2026-01-09T20:17:07" thruDate="2026-12-31T23:59:57"/>
+    <Nikunj.party.PartyContactMech partyId="104" contactMechId="202" fromDate="2026-01-09T20:17:09" thruDate="2026-12-31T23:59:59"/>
+    <Nikunj.party.PartyContactMech partyId="101" contactMechId="203" fromDate="2026-01-09T20:17:09" thruDate="2026-12-31T23:59:58"/>
+    <Nikunj.party.PartyContactMech partyId="103" contactMechId="204" fromDate="2026-01-09T20:17:09" thruDate="2026-12-31T23:59:59"/>
+    <Nikunj.party.PartyContactMech partyId="105" contactMechId="205" fromDate="2026-01-09T20:17:09" thruDate="2026-12-31T23:59:57"/>
+
+</entity-facade-xml>

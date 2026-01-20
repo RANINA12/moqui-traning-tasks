@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.0.0.xsd">
+<!--    <log level="warn" message="REST /tutorial/create HIT"/>-->
+
+    <service verb="create" noun="Tutorial" type="inline">
+
+        <!-- ONLY required inputs -->
+        <in-parameters>
+            <parameter name="tutorialId"/>
+            <parameter name="description"/>
+        </in-parameters>
+
+        <out-parameters>
+            <parameter name="tutorialId" required="true"/>
+        </out-parameters>
+
+        <actions>
+            <!-- DEBUG -->
+            <log level="warn" message="SERVICE INPUT tutorialId=${tutorialId}, description=${description}"/>
+
+            <!-- create empty entity value -->
+            <entity-make-value entity-name="tutorial.Tutorial" value-field="tutorial"/>
+
+            <!-- set fields EXPLICITLY -->
+            <entity-set value-field="tutorial" field-name="tutorialId" from="tutorialId"/>
+            <entity-set value-field="tutorial" field-name="description" from="description"/>
+
+            <!-- PK handling -->
+            <if condition="!tutorial.tutorialId">
+                <entity-sequenced-id-primary value-field="tutorial"/>
+            </if>
+
+            <!-- persist -->
+            <entity-create value-field="tutorial"/>
+        </actions>
+
+    </service>
+    <service verb="get" noun="Tutorial" type="inline">
+        <out-parameters>
+            <parameter name="tutorialList" type="List"/>
+        </out-parameters>
+
+        <actions>
+            <!-- Fetch all rows -->
+            <entity-find entity-name="tutorial.Tutorial"
+                         list="tutorialList"/>
+
+            <!-- Debug -->
+            <log level="warn"
+                 message="GET SERVICE HIT | count=${tutorialList.size()}"/>
+        </actions>
+    </service>
+</services>
