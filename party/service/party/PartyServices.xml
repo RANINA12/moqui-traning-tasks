@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+
+    <service verb="create" noun="Person" type="inline">
+        <in-parameters>
+            <parameter name="partyId" required="true"/>
+            <parameter name="firstName" required="true"/>
+            <parameter name="lastName" required="true"/>
+            <parameter name="dateOfBirth"/>
+        </in-parameters>
+
+        <out-parameters>
+            <parameter name="message"/>
+        </out-parameters>
+
+        <actions>
+
+            <entity-find-one entity-name="Nikunj.party.Party"  value-field="party" >
+            <field-map field-name="partyId" from="partyId"/>
+            </entity-find-one>
+
+            <if condition="!party">
+
+                <return error="true" message="Party does not exist"/>
+            </if>
+
+            <entity-make-value entity-name="Nikunj.party.Person" value-field="person"/>
+
+            <set field="person.firstName" from="firstName"/>
+            <set field="person.lastName" from="lastName"/>
+            <set field="person.partyId" from="partyId"/>
+            <set field="person.dateOfBirth" from="dateOfBirth"/>
+            <entity-create value-field="person"/>
+            <set field="message" value="Person Created Successfully"/>
+        </actions>
+    </service>
+
+    <service verb="create" noun="PersonGroovy" type="script" location="component://party/service/party/createPerson.groovy">
+            <in-parameters>
+                <parameter name="partyId" required="true"/>
+                <parameter name="firstName" required="true"/>
+                <parameter name="lastName" required="true"/>
+                <parameter name="dateOfBirth"/>
+            </in-parameters>
+
+            <out-parameters>
+                <parameter name="message"/>
+            </out-parameters>
+    </service>
+
+</services>

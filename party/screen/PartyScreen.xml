@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.0.0.xsd"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd"
         require-authentication="anonymous-all">
     <transition name="createParty">
         <service-call name="create#Nikunj.party.Party"/>
         <default-response url="."/>
     </transition>
+
+    <transition name="createPerson">
+        <service-call name="party.PartyServices.create#PersonGroovy"/>
+        <default-response url="."/>
+    </transition>
+
     <actions>
         <entity-find entity-name="Nikunj.party.Party" list="partyList">
             <search-form-inputs/>
@@ -14,7 +20,7 @@
     <widgets>
         <label type="h1" text="Party data"/>
         <container-dialog id="createPartyDialog" button-text="Create Party">
-            <form-single name="createParty" transition="createParty" focus-field="">
+            <form-single name="CreateParty" transition="createParty" focus-field="">
                  <auto-fields-entity entity-name="Nikunj.party.Party" field-type="edit"/>
                 <field name="handleCreateNewParty">
                     <default-field title="Create">
@@ -23,7 +29,22 @@
                 </field>
             </form-single>
         </container-dialog>
-        <form-list name="partyDisplay" list="partyList" skip-form="false" header-dialog="true">
+
+
+        <container-dialog id="createPersonDialog" button-text="AddPerson">
+            <form-single name="AddPerson" transition="createPerson">
+                <auto-fields-entity entity-name="Nikunj.party.Person" field-type="edit"/>
+
+                <field name="handleAddNewPerson">
+                    <default-field title="Add">
+                        <submit/>
+                    </default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+
+
+        <form-list name="PartyDisplay" list="partyList" skip-form="false" header-dialog="true">
             <auto-fields-entity entity-name="Nikunj.party.Party" field-type="find-display"/>
         </form-list>
     </widgets>

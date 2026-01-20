@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.0.0.xsd">
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
 <!--    <log level="warn" message="REST /tutorial/create HIT"/>-->
 
     <service verb="create" noun="Tutorial" type="inline">
-
-        <!-- ONLY required inputs -->
         <in-parameters>
             <parameter name="tutorialId"/>
-            <parameter name="description"/>
+            <parameter name="description" />
+
         </in-parameters>
-
-        <out-parameters>
-            <parameter name="tutorialId" required="true"/>
-        </out-parameters>
-
+     <out-parameters>
+         <parameter name="tutorialId" />
+         <parameter name="description"/>
+         <parameter name="message"/>
+     </out-parameters>
         <actions>
-            <!-- DEBUG -->
-            <log level="warn" message="SERVICE INPUT tutorialId=${tutorialId}, description=${description}"/>
-
-            <!-- create empty entity value -->
             <entity-make-value entity-name="tutorial.Tutorial" value-field="tutorial"/>
-
-            <!-- set fields EXPLICITLY -->
-            <entity-set value-field="tutorial" field-name="tutorialId" from="tutorialId"/>
-            <entity-set value-field="tutorial" field-name="description" from="description"/>
-
-            <!-- PK handling -->
-            <if condition="!tutorial.tutorialId">
-                <entity-sequenced-id-primary value-field="tutorial"/>
-            </if>
-
-            <!-- persist -->
+            <set field="tutorial.tutorialId" from="tutorialId"/>
+            <set field="tutorial.description" from="description"/>
             <entity-create value-field="tutorial"/>
+            <set field="message" value="Party Added Successfully"/>
         </actions>
-
     </service>
     <service verb="get" noun="Tutorial" type="inline">
         <out-parameters>
             <parameter name="tutorialList" type="List"/>
         </out-parameters>
 
-        <actions>
-            <!-- Fetch all rows -->
+        <actions><!-- Fetch all rows -->
             <entity-find entity-name="tutorial.Tutorial"
                          list="tutorialList"/>
 

@@ -1,26 +1,17 @@
 <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-3.0.0.xsd"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-3.xsd"
           name="tutorial"
           displayName="Tutorial API"
           version="1.0">
-
     <resource name="create">
-        <method type="post" accept-json="true">
-            <service
-                    name="tutorial.TutorialServices.createTutorial"
-                    in-map="ec.web.parameters"
-                    out-map="result"
-                    web-send-json-response="true"/>
+        <method type="post">
+            <service name="tutorial.TutorialServices.createTutorial"/>
         </method>
     </resource>
-
+    
     <resource name="get">
         <method type="get">
-            <service
-                name = "tutorial.TutorialServices.getTutorial"
-                out-map="result"
-                web-send-json-response="true"/>
-            />
+            <service name="tutorial.TutorialServices.getTutorial"/>
         </method>
     </resource>
 

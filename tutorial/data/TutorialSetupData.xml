@@ -5,9 +5,9 @@
     <moqui.security.ArtifactGroupMember artifactGroupId="TUT_APP"
                                         artifactName="component://tutorial/screen/tutorial.xml"
                                         artifactTypeEnumId="AT_XML_SCREEN" inheritAuthz="Y"/>
-    <moqui.security.ArtifactGroupMember artifactGroupId="TUT_APP"
-                                        artifactName="tutorial.TutorialServices.create#Tutorial"
-                                        artifactTypeEnumId="AT_SERVICE" inheritAuthz="Y"/>
+<!--    <moqui.security.ArtifactGroupMember artifactGroupId="TUT_APP"-->
+<!--                                        artifactName="tutorial.TutorialServices.create#Tutorial"-->
+<!--                                        artifactTypeEnumId="AT_SERVICE" inheritAuthz="Y"/>-->
 
     <moqui.security.ArtifactGroupMember artifactGroupId="TUT_APP"
                                         artifactName="/tutorial"
