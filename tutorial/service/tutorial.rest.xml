@@ -2,7 +2,8 @@
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-3.xsd"
           name="tutorial"
           displayName="Tutorial API"
-          version="1.0">
+          version="1.0"
+>
     <resource name="create">
         <method type="post">
             <service name="tutorial.TutorialServices.createTutorial"/>
@@ -15,4 +16,14 @@
         </method>
     </resource>
 
+    <resource name="getsecurity">
+        <method type="get">
+            <service name="tut.TestingSecurity.getSecurity#Tutorial"/>
+        </method>
+    </resource>
+    <resource name="createsecurity">
+        <method type="post">
+            <service name="tut.TestingSecurity.createSecurity#Tutorial"/>
+        </method>
+    </resource>
 </resource>

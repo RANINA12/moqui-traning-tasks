@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd">
-    <subscreens default-item="FindTutorial"/>
-<!--    <subscreens default-item="TestingTutorial"/>-->
     <widgets>
-        <label type="h1" text="Hello world!"/>
+        <label type="h1" style="text-center" text="Hello world!"/>
         <render-mode>
-            <text type="html,vuet" location="component://tutorial/screen/tutorial/hello.html"/>
+            <text type="any" location="component://tutorial/screen/tutorial/hello.html"/>
         </render-mode>
         <subscreens-active/>
     </widgets>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <!--    <log level="warn" message="REST /tutorial/create HIT"/>-->
+
+    <service verb="createSecurity" noun="Tutorial" type="inline">
+        <in-parameters>
+            <parameter name="tutorialId"/>
+            <parameter name="description" />
+
+        </in-parameters>
+        <out-parameters>
+            <parameter name="tutorialId" />
+            <parameter name="description"/>
+            <parameter name="message"/>
+        </out-parameters>
+        <actions>
+            <entity-make-value entity-name="tutorial.Tutorial" value-field="tutorial"/>
+            <set field="tutorial.tutorialId" from="tutorialId"/>
+            <set field="tutorial.description" from="description"/>
+            <entity-create value-field="tutorial"/>
+            <set field="message" value="Party Added Successfully"/>
+        </actions>
+    </service>
+    <service verb="getSecurity" noun="Tutorial" type="inline">
+        <out-parameters>
+            <parameter name="tutorialList" type="List"/>
+        </out-parameters>
+
+        <actions><!-- Fetch all rows -->
+            <entity-find entity-name="tutorial.Tutorial"
+                         list="tutorialList"/>
+
+            <!-- Debug -->
+            <log level="warn"
+                 message="GET SERVICE HIT | count=${tutorialList.size()}"/>
+        </actions>
+    </service>
+</services>
