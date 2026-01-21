@@ -1,9 +1,146 @@
-Put your add-on component directories in this directory to load them when Moqui runs.
+**MODULE 0 – MOQUI TASK IMPLEMENTATION**
+===================================
 
-Here is the definition  what each component i make is doing
+This repository contains the implementation of Module 0 tasks using the Moqui Framework.
+The work is divided into three custom Moqui components as described below.
 
-The moqui-training component is the part of the task 1 as per the module 0 .....
 
-The party component is the the part of the asked assignment
+COMPONENT STRUCTURE
+-------------------
 
-The tutorial component is for the practice purpose and learn the moqui concept based on the quick tutorial
+runtime/component/
+│
+├── moqui-training/
+│   ├── component.xml
+│   ├── data/
+│   ├── entity/
+│   ├── screen/
+│   ├── service/
+│
+│
+├── party/
+│   ├── component.xml
+│   ├── data/
+│   ├── entity/
+│   ├── screen/
+│   ├── service/
+|   ├── MoquiConf.xml/
+│  
+│
+└── tutorial/
+    ├── MoquiConf.xml
+    ├── data/
+    ├── entity/
+    ├── screen/
+    ├── script/
+    ├── service/
+  
+
+
+TASK-WISE IMPLEMENTATION
+=======================
+
+
+TASK 0 – ENVIRONMENT & COMPONENT SETUP
+--------------------------------------
+• Moqui Framework setup completed
+• Custom components created under runtime/component
+• Components registered using component.xml
+• Verified components load successfully at runtime
+
+
+TASK 1 – moqui-training COMPONENT
+---------------------------------
+Component Name: moqui-training
+
+• Created as part of Task 1 of Module 0
+• Purpose:
+  - Understand Moqui component structure
+  - Verify component loading
+  - Basic screen creation
+• connected to default h2 database
+
+
+TASK 2 – MYSQL DATABASE CONNECTION
+----------------------------------
+Component: party
+
+• Connected Moqui to MySQL database named `moqui`
+• Changes made in MoquiDevConf.xml (NOT committed to Git)
+• Datasource configuration added inside entity-facade:
+
+<datasource group-name="transactional" database-conf-name="mysql8" schema-name="moqui">
+    <inline-jdbc
+        jdbc-driver="com.mysql.cj.jdbc.Driver"
+        jdbc-uri="jdbc:mysql://localhost:3306/moqui?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"
+        jdbc-username="moqui"
+        jdbc-password="changeme">
+    </inline-jdbc>
+</datasource>
+
+• Database connection verified successfully
+
+
+TASK 3 – ENTITY CREATION & SEED DATA
+------------------------------------
+Component: party
+
+• Created custom entities (Party, Person, etc.)
+• Defined entity relationships
+• Added seed/demo data using data XML
+• Verified data insertion in MySQL database
+
+
+TASK 4 – DISPLAY PARTY DATA ON SCREEN
+-------------------------------------
+Component: party
+
+• Created a screen to display Party entity records
+• Used list-form to show data in tabular format
+• Data fetched using entity-find
+• Party records successfully visible on UI
+
+
+TASK 5 – CREATE PARTY USING DEFAULT SERVICE
+-------------------------------------------
+Component: party
+
+• Created a form screen
+• Used Moqui default create service
+• Form submits data directly to database
+• Party records created successfully via UI
+
+
+TASK 6 – CUSTOM SERVICE FOR PERSON ENTITY
+-----------------------------------------
+Component: party
+
+• Created a custom service to insert Person entity data
+• Service tested using:
+  - Moqui screen form
+  - REST API endpoint
+  - Postman
+  - Swagger Api
+• Data successfully stored in database
+
+
+TUTORIAL COMPONENT
+==================
+Component Name: tutorial
+
+• Created for practice and learning purposes
+• Based on Moqui Quick Tutorial
+• Used to understand:
+  - Entities
+  - Services
+  - Screens
+  - REST APIs
+• Not part of evaluation tasks
+
+
+SUMMARY
+=======
+• Module 0 tasks completed from Task 0 to Task 6
+• Proper component separation followed
+• Database configuration handled securely
+• Screens, entities, and services implemented as per instructions
