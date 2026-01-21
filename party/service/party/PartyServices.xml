@@ -4,9 +4,17 @@
 
     <service verb="create" noun="Person" type="inline">
         <in-parameters>
-            <parameter name="partyId" required="true"/>
-            <parameter name="firstName" required="true"/>
-            <parameter name="lastName" required="true"/>
+            <parameter name="partyId" required="true">
+
+            </parameter>
+            <parameter name="firstName" required="true">
+                <text-letters/>
+                <text-length max="63" min="1"/>
+            </parameter>
+            <parameter name="lastName" required="true">
+                <text-letters/>
+                <text-length max="63" min="1"/>
+            </parameter>
             <parameter name="dateOfBirth"/>
         </in-parameters>
 
@@ -19,14 +27,15 @@
             <entity-find-one entity-name="Nikunj.party.Party"  value-field="party" >
             <field-map field-name="partyId" from="partyId"/>
             </entity-find-one>
-
             <if condition="!party">
-
                 <return error="true" message="Party does not exist"/>
             </if>
 
-            <entity-make-value entity-name="Nikunj.party.Person" value-field="person"/>
+            <if condition="party.partyTypeEnumId != PERSON">
+                <return error="true" message="PartyTypeId is not a Person"/>
+            </if>
 
+            <entity-make-value entity-name="Nikunj.party.Person" value-field="person"/>
             <set field="person.firstName" from="firstName"/>
             <set field="person.lastName" from="lastName"/>
             <set field="person.partyId" from="partyId"/>
@@ -49,4 +58,39 @@
             </out-parameters>
     </service>
 
+<!--    Extra Services of delete works only via API -PostMan -->
+
+    <service verb="delete" noun="PartyGroovy" type="script" location="component://party/service/party/DeleteAction.groovy" method="DeleteParty">
+        <in-parameters>
+            <parameter name="partyId" required="true"/>
+        </in-parameters>
+
+        <out-parameters>
+            <parameter name="message"/>
+        </out-parameters>
+    </service>
+
+    <service verb="delete" noun="PersonGroovy"  type="script" location="component://party/service/party/DeleteAction.groovy" method="DeletePerson">
+        <in-parameters>
+            <parameter name="partyId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="message"/>
+        </out-parameters>
+    </service>
+
+    <service verb="delete" noun="PartyGroupGroovy" type="script" location="component://party/service/party/DeleteAction.groovy" method="DeletePartyGroup">
+        <in-parameters>
+            <parameter name="partyId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="message"/>
+        </out-parameters>
+    </service>
+
 </services>
+
+<!--        //Here Important thing to remember  evaluateStringExpand(String input , String debug-location) is used when we use ${}-->
+<!--        // other inbuilt function to evaluate condition are evaluateCondition it return boolean-->
+<!--        // one more evaluateContextField return object .... parameter are(expression , debugLocation)-->
+<!--        // debug location is important while debug if error it will print from where error is coming-->

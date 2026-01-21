@@ -15,13 +15,11 @@ if (!party) {
     return
 }
 
+
 if(party.partyTypeEnumId !="PERSON"){
     ec.message.addError("Party ${partyId} exists but is of type ${party.partyTypeEnumId}. Person can be created only for PERSON type.")
     return
-
 }
-
-
 // create Person only if Party exists
 def person = ec.entity.makeValue("Nikunj.party.Person")
 
@@ -34,6 +32,5 @@ if (context.dateOfBirth) {
 person.create()
 
 context.message = "Person ${person.firstName} ${person.lastName} created successfully!"
-
 
 

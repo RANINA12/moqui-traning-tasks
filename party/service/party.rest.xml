@@ -1,12 +1,30 @@
 <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/rest-api-3.xsd"
-          name="person"
+          name="api"
           displayName="Party API"
           version="1.0" require-authentication="anonymous-all">
     
     <resource name="create" require-authentication="anonymous-all">
         <method type="post">
             <service name="party.PartyServices.create#PersonGroovy"/>
+        </method>
+    </resource>
+    
+    <resource name="deleteParty" require-authentication="anonymous-all">
+        <method type="delete">
+            <service name="party.PartyServices.delete#PartyGroovy"/>
+        </method>
+    </resource>
+
+    <resource name="deletePerson" require-authentication="anonymous-all">
+        <method type="delete">
+            <service name="party.PartyServices.delete#PersonGroovy"/>
+        </method>
+    </resource>
+
+    <resource name="deletePartyGroup" require-authentication="anonymous-all">
+        <method type="delete">
+            <service name="party.PartyServices.delete#PartyGroupGroovy"/>
         </method>
     </resource>
 </resource>

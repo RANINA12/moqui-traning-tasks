@@ -13,18 +13,19 @@
     </transition>
 
     <actions>
+        <script location="component://party//service/party/TestingJs.js"/>
         <entity-find entity-name="Nikunj.party.Party" list="partyList">
             <search-form-inputs/>
         </entity-find>
     </actions>
     <widgets>
-        <label type="h1" text="Party data"/>
+
         <container-dialog id="createPartyDialog" button-text="Create Party">
             <form-single name="CreateParty" transition="createParty" focus-field="">
                  <auto-fields-entity entity-name="Nikunj.party.Party" field-type="edit"/>
                 <field name="handleCreateNewParty">
                     <default-field title="Create">
-                        <submit confirmation="Do you really want to create" icon="glyphicon glyphicon-plus"/>
+                        <submit confirmation="Do you really want to create" icon="glyphicon glyphicon-plus" />
                     </default-field>
                 </field>
             </form-single>
@@ -34,7 +35,6 @@
         <container-dialog id="createPersonDialog" button-text="AddPerson">
             <form-single name="AddPerson" transition="createPerson">
                 <auto-fields-entity entity-name="Nikunj.party.Person" field-type="edit"/>
-
                 <field name="handleAddNewPerson">
                     <default-field title="Add">
                         <submit/>
@@ -42,6 +42,8 @@
                 </field>
             </form-single>
         </container-dialog>
+
+        <label type="h1"  text="Party data"/>
 
 
         <form-list name="PartyDisplay" list="partyList" skip-form="false" header-dialog="true">
