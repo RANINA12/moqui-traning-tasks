@@ -10,7 +10,27 @@
             <search-form-inputs/></entity-find>
     </actions>
     <widgets>
-        <container-dialog id="CreateTutorialDialog" button-text="Create Tutorial">
+
+        <render-mode>
+            <text type="html"><![CDATA[
+            <style>
+                .display-label {
+                    color: red;
+                    font-weight: bold;
+                    background-color: #ffe6e6;
+                    padding: 10px;
+                    display: block;
+                    text-align: center;
+                    font-size :50px;
+                }
+            </style>
+        ]]></text>
+        </render-mode>
+        <label text="Displaying All Listed Tutorial"
+               type="div"
+                style="display-label"/>
+
+        <container-dialog id="CreateTutorialDialog" button-text="Create Tutorial" icon="">
             <form-single name="CreateTutorial" transition="createTutorial">
                 <auto-fields-entity entity-name="tutorial.Tutorial" field-type="edit"/>
                 <field name="submitButton"><default-field title="Create"><submit/></default-field></field>

@@ -2,6 +2,8 @@
 <screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd"
         require-authentication="anonymous-all">
+
+
     <transition name="createParty">
         <service-call name="create#Nikunj.party.Party"/>
         <default-response url="."/>
@@ -19,6 +21,33 @@
         </entity-find>
     </actions>
     <widgets>
+
+        <render-mode>
+            <text type="html"><![CDATA[
+            <style>
+                .title-header{
+                    color: red;
+                    font-weight: bold;
+                    padding: 10px;
+                    display: block;
+                    text-align: center;
+                    font-size :25px;
+                }
+
+                .main-text{
+                  text-align: center;
+                  font-style: italic;
+                  background-color: #1e293b;
+                  color: #f8fafc;
+                  padding: 15px;
+                  font-size :35px
+                }
+            </style>]]>
+
+            </text>
+        </render-mode>
+
+        <label text="!!! Welcome to the Hotwax System !!!" type="div" style="main-text"/>
 
         <container-dialog id="createPartyDialog" button-text="Create Party">
             <form-single name="CreateParty" transition="createParty" focus-field="">
@@ -43,9 +72,7 @@
             </form-single>
         </container-dialog>
 
-        <label type="h1"  text="Party data"/>
-
-
+        <label type="div"  text="Showing All Party data" style="title-header"/>
         <form-list name="PartyDisplay" list="partyList" skip-form="false" header-dialog="true">
             <auto-fields-entity entity-name="Nikunj.party.Party" field-type="find-display"/>
         </form-list>

@@ -2,7 +2,7 @@
 <screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-3.xsd">
     <widgets>
-        <label type="h1" text="HEllo from second"/>
+        <label type="h1" text="Testing from second Screen"/>
     </widgets>
 
 </screen>

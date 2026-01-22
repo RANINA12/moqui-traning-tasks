@@ -1,0 +1,26 @@
+/* screen/tutorial/tutorial.css */
+body {
+    background-color: #f4f4f4; /* Light grey background */
+}
+
+h1 {
+    color: #2E86C1; /* Blue text */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#Centered-Test {
+    text-align: center;
+    color: #2c3e50;
+    margin: 20px 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+/* Custom Error Message Style */
+.error-label {
+    color: red;
+    font-weight: bold;
+    background-color: #ffe6e6;
+    padding: 10px;
+    display: block; /* Ensures the padding works correctly */
+}
